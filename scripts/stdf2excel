@@ -35,8 +35,9 @@ def toExcel(fname,tables):
         if len(record)==0:
             print("Ignore exporting table %s: No such record type exists." %k)
         else:
-            columns = [field[0] for field in record[0].fieldMap]
-            v.to_excel(writer,sheet_name=k,columns=columns,index=False,na_rep="N/A")
+            if k != 'EPS':
+                columns = [field[0] for field in record[0].fieldMap]
+                v.to_excel(writer,sheet_name=k,columns=columns,index=False,na_rep="N/A")
     writer.save()
 
 if __name__=="__main__":
